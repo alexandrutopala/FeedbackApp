@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Review</title>
+		<link href="webjars/bootstrap/4.1.2/css/bootstrap.min.css"
+			rel="stylesheet"
+			/>
+		
+		<script src="webjars/jquery/3.2.1/jquery.min.js"
+			type="text.javascript"></script>
+			
+		<script type="text/javascript" 
+			src="webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>	
+	</head>
+	<body>
+		<div class="container">
+			<div class="card">
+				<div class="card-block">
+					<table class="table table-hover" style="table-layout: fixed;">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nume</th>
+								<th>Structura</th>
+								<th>Materiale</th>
+								<th>Predare</th>
+								<th>Aplicare</th>
+								<th>General</th>
+								<th>Review</th>
+								<th>Time-Stamp</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="feedback : ${data}">
+								<td th:text="${feedback.id}"></td>
+								<td th:text="${feedback.studentName}"></td>
+								<td th:text="${feedback.structureNote}"></td>
+								<td th:text="${feedback.materialsNote}"></td>
+								<td th:text="${feedback.teachingNote}"></td>
+								<td th:text="${feedback.practiceNote}"></td>
+								<td th:text="${feedback.experienceNote}"></td>
+								<td th:text="${feedback.feedback}" ></td>
+								<td th:text="${feedback.timeStamp}"></td>
+							</tr>
+						</tbody>
+					</table>
+					<hr/>
+					
+					<ul class="nav nav-pills">
+						<li class="nav-item" th:each="i : ${#numbers.sequence(0, data.totalPages-1)}"> 
+							<a th:href="@{/feedback(page=${i})}" th:text="${i}" class="nav-link"
+								th:classappend="${currentPage}==${i}?'active':''"></a>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		
+		<br><br>
+		<div align="center">
+	        <form action="/feedback/download" method="GET">
+	        	<input type="submit" value="Download data">
+	        </form>
+        </div>
+		
+		<br>
+		
+		<div align="center"> 
+			<form action="/feedback" method="post" enctype="multipart/form-data">
+				<input type="file" name="file">
+				<input type="submit" value="Upload File">
+				<p th:text=${message}></p>
+			</form>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Feedback</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        
+        <link rel="stylesheet" th:href="@{/css/form.css}" type="text/css"/>
+        
+        <script type="text/javascript" th:src="@{/js/form.js}"></script>
+        
+        <script type="text/javascript">
+        	
+        </script>
+        
+    </head>
+    <body >
+        <div class="container">
+            <div class="imagebg"></div>
+            <div class="row " style="margin-top: 30px; margin-bottom: 30px">
+                <div class="col-md-6 col-md-offset-3 form-container">
+                    <h2>Feedback</h2> 
+                    <p> Evalueaza cu o nota de la 1 la 5 urmatoarelor aspecte ale cursului: </p>
+                    <form role="form" method="post" id="reused_form" action="/" onSubmit="return checkInput()">
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Structurarea materiei</label>
+                                <p>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="structure" id="radio_1_1" value="1">
+                                        1 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="structure" id="radio_1_2" value="2" >
+                                        2 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="structure" id="radio_1_3" value="3" >
+                                        3 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="structure" id="radio_1_4" value="4" >
+                                        4 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="structure" id="radio_1_5" value="5" >
+                                        5 
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Calitatea materialelor de curs</label>
+                                <p>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="materials" id="radio_2_1" value="1">
+                                        1 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="materials" id="radio_2_2" value="2" >
+                                        2 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="materials" id="radio_2_3" value="3" >
+                                        3 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="materials" id="radio_2_4" value="4" >
+                                        4 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="materials" id="radio_2_5" value="5" >
+                                        5 
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Modul de predare</label>
+                                <p>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="teaching" id="radio_3_1" value="1">
+                                        1 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="teaching" id="radio_3_2" value="2" >
+                                        2 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="teaching" id="radio_3_3" value="3" >
+                                        3 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="teaching" id="radio_3_4" value="4" >
+                                        4 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="teaching" id="radio_3_5" value="5" >
+                                        5 
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Aplicarea notiunilor teoretice invatate</label>
+                                <p>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="practice" id="radio_4_1" value="1">
+                                        1 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="practice" id="radio_4_2" value="2" >
+                                        2 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="practice" id="radio_4_3" value="3" >
+                                        3 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="practice" id="radio_4_4" value="4" >
+                                        4 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="practice" id="radio_4_5" value="5" >
+                                        5 
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label>Experienta cursului in ansamblu</label>
+                                <p>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="experience" id="radio_5_1" value="1">
+                                        1 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="experience" id="radio_5_2" value="2" >
+                                        2 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="experience" id="radio_5_3" value="3" >
+                                        3 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="experience" id="radio_5_4" value="4" >
+                                        4 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="experience" id="radio_5_5" value="5" >
+                                        5 
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                        
+                            <div class="col-sm-12 form-group">
+                                <label for="comments"> Comentarii sau sugestii? Lasa-le aici :)</label>
+                                <textarea class="form-control" type="textarea" name="comments" id="comments" placeholder="Review-ul tau..." maxlength="6000" rows="7" cols=""></textarea>
+                            </div>
+                        </div>    
+                        
+                        <div class="row">
+	                        <div class="col-sm-12 form-group">
+	                        	<label for="name">Optional, numele tau</label><br>
+	                        	<input class="form-control" type="text" name="name" id="studentName" placeHolder="Numele tau..."></input>
+                        	</div>
+                        </div>
+                        <br>              
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button type="submit" class="btn btn-lg btn-warning btn-block" >Post </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
