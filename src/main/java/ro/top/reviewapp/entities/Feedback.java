@@ -1,6 +1,7 @@
 package ro.top.reviewapp.entities;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,8 +39,7 @@ public class Feedback {
 	@Column(name = "review", nullable = true, length = 1000)
 	private String feedback;
 	
-	@Column(name = "time_stamp", insertable = false, updatable = false,
-			columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name = "time_stamp", updatable = false)
 	private Date timeStamp;
 
 	
@@ -54,6 +54,7 @@ public class Feedback {
 		this.experienceNote = experienceNote;
 		this.studentName = studentName.equals("") ? null : studentName;
 		this.feedback = feedback.equals("") ? null : feedback;
+		this.timeStamp = new Date(Calendar.getInstance().getTimeInMillis());
 	}
 
 	public Feedback() {

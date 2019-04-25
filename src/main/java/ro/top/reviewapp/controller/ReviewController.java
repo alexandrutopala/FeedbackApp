@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JavaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.data.domain.PageRequest;
@@ -92,7 +94,7 @@ public class ReviewController {
 	
 	@GetMapping(path = "/feedback/download", produces = "application/text")
 	@ResponseBody
-	public ResponseEntity<Object> downloadFeedbacks() {
+	public ResponseEntity<Object> downloadFeedback() {
 		List<Feedback> feedbacks = feedbackRepo.findAll();
 		
 		ObjectMapper mapper = new ObjectMapper();
@@ -135,11 +137,12 @@ public class ReviewController {
 	public String uploadDb(Model model, @RequestParam("file") MultipartFile file, @RequestParam(name = "page", defaultValue = "0") int page) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			Feedback f = null;
 			InputStream is = file.getInputStream();
 			
 			try {
-				while ((f = mapper.readValue(is, Feedback.class)) != null) {
+				List<Feedback> list = mapper.readValue(is, new TypeReference<List<Feedback>>(){});
+
+				for (Feedback f : list) {
 					try {
 						f.setId(null);
 						feedbackRepo.save(f);
@@ -147,10 +150,12 @@ public class ReviewController {
 						e.printStackTrace();
 					}
 				}
-			} catch (IOException e) {				
+				model.addAttribute("message", "Success!");
+			} catch (IOException e) {
+				e.printStackTrace();
+				model.addAttribute("message", e.getMessage());
 			}
-			
-			model.addAttribute("message", "Success!");
+
 		} catch (Exception e) {
 			model.addAttribute("message", "Failed with exception : " + e);
 		}
